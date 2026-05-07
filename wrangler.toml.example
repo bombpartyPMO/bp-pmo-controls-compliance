@@ -1,0 +1,13 @@
+name = "pmo-controls-compliance"
+main = "cloudflare-worker.js"
+compatibility_date = "2026-05-06"
+
+[vars]
+GITHUB_OWNER = "bombpartyPMO"
+GITHUB_REPO = "bp-pmo-controls-compliance"
+GITHUB_BRANCH = "main"
+GITHUB_DATA_PATH = "data/controls-data.json"
+
+# Store these as Cloudflare Worker secrets, not plain vars:
+# wrangler secret put GITHUB_TOKEN
+# wrangler secret put PMO_EDIT_KEY

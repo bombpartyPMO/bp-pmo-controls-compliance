@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BombParty PMO - Controls Compliance Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--citron:#EAE753;--navy:#0F3053;--green:#3DB88B;--amber:#F0B63C;--red:#E15D5D;--charcoal:#2C2C2C;--ice:#EEF8FF;--soft:#F7F9FC;--purple:#6454C0;--teal:#008DA6;--line:rgba(15,48,83,.10);--line2:rgba(15,48,83,.06)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',Arial,sans-serif;color:var(--charcoal);background:var(--soft);line-height:1.55;font-size:14px;-webkit-font-smoothing:antialiased}
+.nav{position:sticky;top:0;z-index:100;background:rgba(247,249,252,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-left,.nav-right{display:flex;align-items:center;gap:.8rem}.nav-logo{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:rgba(234,231,83,.42);border:1px solid rgba(234,231,83,.65);padding:4px 10px;border-radius:100px}.nav-title{font-size:.78rem;font-weight:500;color:var(--navy);opacity:.62}
+.nav-pill{display:flex;align-items:center;gap:5px;font-size:.55rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);opacity:.58;background:#fff;border:1px solid var(--line);padding:4px 10px;border-radius:100px}.dot{width:5px;height:5px;border-radius:50%;background:var(--green)}.nav-date{font-size:.58rem;color:var(--navy);opacity:.4;letter-spacing:.04em;text-transform:uppercase}.nav-av{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--citron);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+.tabs{position:sticky;top:49px;z-index:90;background:var(--soft);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab-btn{background:none;border:none;border-bottom:2px solid transparent;padding:.9rem 1.1rem;font-family:inherit;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.38;cursor:pointer;white-space:nowrap}.tab-btn:hover{opacity:.66}.tab-btn.active{opacity:1;border-bottom-color:var(--navy)}.tab-num{opacity:.5;margin-right:4px}
+.main{max-width:1140px;margin:0 auto;padding:2.3rem 2rem 4rem}.pane{display:none}.pane.active{display:block}
+.pmo-hero{background:var(--navy);color:#fff;padding:1.75rem 1.85rem;border-radius:14px;margin-bottom:1.5rem;position:relative;overflow:hidden}.pmo-hero::before{content:'';position:absolute;top:-55%;right:-10%;width:420px;height:420px;background:radial-gradient(circle,rgba(234,231,83,.12) 0%,transparent 62%);pointer-events:none}.eyebrow{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--citron);margin-bottom:.45rem;font-weight:800}.pmo-hero h1{font-size:1.48rem;font-weight:700;line-height:1.2;margin-bottom:.35rem;color:#fff}.pmo-hero h1 .acc{color:var(--citron)}.pmo-hero p{color:rgba(255,255,255,.6);font-size:.78rem;max-width:680px}.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.25rem;position:relative}
+.page-header{margin-bottom:1.45rem}.page-header h2{font-size:1.35rem;font-weight:750;color:var(--navy);letter-spacing:-.02em;margin-bottom:.35rem}.page-header p{font-size:.8rem;color:var(--navy);opacity:.52;line-height:1.6}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem}.kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.15rem 1.25rem;min-height:108px}.kpi-label{font-size:.58rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);opacity:.42;margin-bottom:.55rem}.kpi-value{font-size:2rem;font-weight:750;color:var(--navy);line-height:1}.kpi-sub{font-size:.65rem;color:var(--navy);opacity:.38;margin-top:.45rem}
+.section-block{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:1.25rem;overflow:hidden}.section-head{display:flex;align-items:flex-start;gap:1rem;padding:1.35rem 1.5rem 1.1rem;border-bottom:1px solid var(--line2)}.section-icon{width:44px;height:44px;flex-shrink:0;background:var(--ice);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--navy);font-weight:800}.section-head-text h3{font-size:.86rem;font-weight:750;color:var(--navy);margin-bottom:.18rem}.section-head-text span{font-size:.72rem;color:var(--navy);opacity:.46}.section-actions{margin-left:auto;display:flex;gap:.55rem;align-items:center}.section-body{padding:1.35rem 1.5rem}.section-body.no-pad{padding:0}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:.6rem 1.1rem;border-radius:8px;border:none;font-family:inherit;font-size:.74rem;font-weight:700;cursor:pointer;transition:opacity .15s;white-space:nowrap}.btn:hover{opacity:.85}.btn-navy{background:var(--navy);color:#fff}.btn-outline{background:#fff;color:var(--navy);border:1.5px solid rgba(15,48,83,.2)}.btn-soft{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2)}.btn-sm{padding:.45rem .82rem;font-size:.68rem}
+.alert{border-left:3px solid var(--navy);background:rgba(15,48,83,.04);border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:.78rem;color:var(--navy);opacity:.78;margin-bottom:1rem;line-height:1.6}.alert.amber{border-color:var(--amber);background:rgba(240,182,60,.08);color:#78350F;opacity:1}.alert.red{border-color:var(--red);background:rgba(225,93,93,.07);color:#B91C1C;opacity:1}.alert.green{border-color:var(--green);background:rgba(61,184,139,.07);color:#065F46;opacity:1}
+.tbl-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:840px}thead th{padding:.72rem 1rem;text-align:left;font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);opacity:.46;background:var(--soft);border-bottom:1px solid var(--line)}tbody tr{border-bottom:1px solid var(--line2)}tbody tr:hover{background:rgba(15,48,83,.02)}tbody tr:last-child{border-bottom:none}td{padding:.82rem 1rem;font-size:.79rem;vertical-align:top;line-height:1.55}.td-bold{font-weight:700;color:var(--navy)}.td-muted{color:var(--navy);opacity:.48;font-size:.73rem}
+.badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.03em;white-space:nowrap}.badge-blue{background:rgba(15,48,83,.08);color:var(--navy);border:1px solid var(--line)}.badge-green{background:rgba(61,184,139,.12);color:#065F46;border:1px solid rgba(61,184,139,.25)}.badge-red{background:rgba(225,93,93,.12);color:#B91C1C;border:1px solid rgba(225,93,93,.25)}.badge-amber{background:rgba(240,182,60,.15);color:#92400E;border:1px solid rgba(240,182,60,.3)}.badge-purple{background:rgba(100,84,192,.10);color:#403294;border:1px solid rgba(100,84,192,.2)}.badge-teal{background:rgba(0,141,166,.10);color:#006C80;border:1px solid rgba(0,141,166,.2)}.badge-gray{background:rgba(15,48,83,.05);color:#5E6C84;border:1px solid var(--line)}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.field{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.9rem}.field.full{grid-column:1/-1}.field label{font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);opacity:.55}.field input,.field select,.field textarea{font-family:inherit;font-size:.8rem;color:var(--charcoal);background:#fff;border:1.5px solid rgba(15,48,83,.15);border-radius:9px;padding:.58rem .82rem;transition:border-color .18s;outline:none;width:100%}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--navy)}.field textarea{resize:vertical;min-height:74px}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,48,83,.35);display:none;align-items:center;justify-content:center;z-index:999;padding:1.5rem}.modal{background:#fff;border-radius:16px;border:1px solid var(--line);width:100%;max-width:720px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(15,48,83,.15)}.modal-hd{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;border-bottom:1px solid var(--line2)}.modal-title{font-size:.9rem;font-weight:800;color:var(--navy)}.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#5E6C84;line-height:1;padding:2px 6px;border-radius:4px;opacity:.55}.modal-close:hover{opacity:1;background:var(--soft)}.modal-body{padding:1.4rem 1.5rem;overflow:auto}.modal-ft{padding:.95rem 1.5rem;border-top:1px solid var(--line2);display:flex;justify-content:flex-end;gap:.6rem;background:var(--soft)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:.75rem 1rem;border-radius:10px;font-size:.75rem;font-weight:700;opacity:0;pointer-events:none;transition:all .2s;z-index:1200}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.cloud-status{position:fixed;right:18px;bottom:18px;z-index:80;background:#fff;border:1px solid var(--line);border-radius:100px;padding:6px 11px;display:flex;align-items:center;gap:6px;font-size:.58rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);box-shadow:0 8px 24px rgba(15,48,83,.08)}.cloud-status .dot{background:var(--amber)}.cloud-status.ok .dot{background:var(--green)}.cloud-status.bad .dot{background:var(--red)}
+.row-tools{display:flex;gap:5px;white-space:nowrap}.tool-btn{border:1px solid rgba(15,48,83,.18);background:#fff;color:var(--navy);border-radius:7px;padding:4px 8px;font-family:inherit;font-size:.62rem;font-weight:800;cursor:pointer}.tool-btn:hover{background:var(--soft)}.tool-btn.danger{color:#B91C1C;border-color:rgba(225,93,93,.28);background:rgba(225,93,93,.06)}
+@media(max-width:800px){.nav{padding:.7rem 1rem}.nav-right{display:none}.tabs{top:48px;padding:0 1rem}.main{padding:1.5rem 1rem 3rem}.g2,.g4,.form-grid{grid-template-columns:1fr}.section-head{flex-wrap:wrap}.section-actions{width:100%;margin-left:0}.btn{justify-content:center}.pmo-hero{padding:1.4rem}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-left"><div class="nav-logo">BombParty PMO</div><div class="nav-title">Controls / Compliance Hub</div></div>
+  <div class="nav-right"><div class="nav-pill"><span class="dot"></span> Controls Active</div><div class="nav-date" id="todayLabel"></div><div class="nav-av">PMO</div></div>
+</nav>
+<div class="tabs">
+  <button class="tab-btn active" onclick="showPane('dashboard',this)"><span class="tab-num">01</span> Dashboard</button>
+  <button class="tab-btn" onclick="showPane('raid',this)"><span class="tab-num">02</span> RAID Log</button>
+  <button class="tab-btn" onclick="showPane('issues',this)"><span class="tab-num">03</span> Issues</button>
+  <button class="tab-btn" onclick="showPane('audit',this)"><span class="tab-num">04</span> Audit Evidence</button>
+  <button class="tab-btn" onclick="showPane('policy',this)"><span class="tab-num">05</span> Policy / SOP</button>
+  <button class="tab-btn" onclick="showPane('approvals',this)"><span class="tab-num">06</span> Approvals</button>
+</div>
+
+<main class="main">
+  <section id="dashboard" class="pane active">
+    <div class="pmo-hero">
+      <div class="eyebrow">Controls / Compliance</div>
+      <h1>PMO control center for <span class="acc">RAID, issues, evidence, SOPs, and approvals.</span></h1>
+      <p>Keep compliance artifacts and governance follow-through visible, editable, and tied to owners before they become audit or delivery surprises.</p>
+      <div class="hero-actions">
+        <button class="btn btn-soft" onclick="openModal('raidItem')">+ Add RAID</button>
+        <button class="btn btn-soft" onclick="openModal('issueItem')">+ Add Issue</button>
+        <button class="btn btn-soft" onclick="openModal('approvalItem')">+ Add Approval</button>
+      </div>
+    </div>
+    <div class="g4" id="kpis"></div>
+    <div class="g2" style="margin-top:1.15rem">
+      <div class="section-block">
+        <div class="section-head"><div class="section-icon">!</div><div class="section-head-text"><h3>Control Attention</h3><span>Open items that need PMO follow-through.</span></div></div>
+        <div class="section-body" id="attentionList"></div>
+      </div>
+      <div class="section-block">
+        <div class="section-head"><div class="section-icon">OK</div><div class="section-head-text"><h3>Compliance Cadence</h3><span>Suggested rhythm for review and evidence hygiene.</span></div></div>
+        <div class="section-body">
+          <div class="alert green"><strong>Weekly:</strong> Review open issues, overdue approvals, and RAID items with red/amber status.</div>
+          <div class="alert"><strong>Monthly:</strong> Confirm evidence links, decision traceability, and SOP version freshness.</div>
+          <div class="alert amber"><strong>Quarterly:</strong> Audit readiness check across approvals, signoffs, testing evidence, and policy exceptions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="raid" class="pane">
+    <div class="page-header"><h2>RAID Log</h2><p>Combined Risks, Assumptions, Issues, and Decisions with owners and next actions.</p></div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">R</div><div class="section-head-text"><h3>RAID Register</h3><span>Single operating log for project control conversations.</span></div><div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('raidItem')">Add RAID</button></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Type</th><th>Item</th><th>Project</th><th>Owner</th><th>Impact</th><th>Status</th><th>Next Action</th><th>Due</th><th>Actions</th></tr></thead><tbody id="raidRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="issues" class="pane">
+    <div class="page-header"><h2>Issue Management</h2><p>Active issues by severity, owner, resolution plan, and escalation status.</p></div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">I</div><div class="section-head-text"><h3>Issue Register</h3><span>Track problems until they are resolved, accepted, or escalated.</span></div><div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('issueItem')">Add Issue</button></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Issue</th><th>Severity</th><th>Project</th><th>Owner</th><th>Resolution Plan</th><th>Status</th><th>Target</th><th>Actions</th></tr></thead><tbody id="issueRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="audit" class="pane">
+    <div class="page-header"><h2>Audit Evidence Hub</h2><p>Approvals, signoffs, testing evidence, and governance artifacts in one evidence register.</p></div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">E</div><div class="section-head-text"><h3>Evidence Register</h3><span>Keep artifact ownership, location, and readiness visible.</span></div><div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('evidenceItem')">Add Evidence</button></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Artifact</th><th>Category</th><th>Project</th><th>Owner</th><th>Location</th><th>Review Status</th><th>Retention</th><th>Actions</th></tr></thead><tbody id="evidenceRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="policy" class="pane">
+    <div class="page-header"><h2>Policy / SOP Library</h2><p>PMO standards, templates, naming conventions, and delivery process guidance.</p></div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">P</div><div class="section-head-text"><h3>SOP Library</h3><span>Version-controlled operating guidance for the PMO team.</span></div><div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('policyItem')">Add SOP</button></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Document</th><th>Type</th><th>Owner</th><th>Version</th><th>Last Review</th><th>Status</th><th>Location</th><th>Actions</th></tr></thead><tbody id="policyRows"></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="approvals" class="pane">
+    <div class="page-header"><h2>Approval Workflow Tracker</h2><p>Items waiting for sponsor, finance, IT, security, legal, or PMO approval.</p></div>
+    <div class="section-block">
+      <div class="section-head"><div class="section-icon">A</div><div class="section-head-text"><h3>Approval Queue</h3><span>Make pending approvals obvious before they block delivery.</span></div><div class="section-actions"><button class="btn btn-navy btn-sm" onclick="openModal('approvalItem')">Add Approval</button></div></div>
+      <div class="section-body no-pad"><div class="tbl-wrap"><table><thead><tr><th>Item</th><th>Approval Area</th><th>Approver</th><th>Project</th><th>Submitted</th><th>Due</th><th>Status</th><th>Blocker</th><th>Actions</th></tr></thead><tbody id="approvalRows"></tbody></table></div></div>
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="dataModal">
+  <div class="modal">
+    <div class="modal-hd"><div class="modal-title" id="modalTitle">Add Entry</div><button class="modal-close" onclick="closeModal()">x</button></div>
+    <div class="modal-body"><div class="form-grid" id="modalFields"></div></div>
+    <div class="modal-ft"><button class="btn btn-outline" onclick="closeModal()">Cancel</button><button class="btn btn-navy" onclick="saveModal()">Save Entry</button></div>
+  </div>
+</div>
+<div class="toast" id="toast">Saved</div>
+<div class="cloud-status bad" id="cloudStatus"><span class="dot"></span><span>Cloud not connected</span></div>
+
+<script>
+const API_BASE=window.PMO_CONTROLS_API||'https://YOUR-CONTROLS-WORKER.YOUR-SUBDOMAIN.workers.dev';
+const REMOTE_ENABLED=!API_BASE.includes('YOUR-CONTROLS-WORKER');
+let activeForm='';
+let editingIndex=-1;
+let data={
+  raid:[
+    {type:'Risk',item:'Security review may delay portal pilot',project:'Customer Portal Modernization',owner:'Security Lead',impact:'Pilot release may shift by two weeks',status:'At Risk',next:'Confirm SSO decision path',due:'May 10, 2026'},
+    {type:'Assumption',item:'ERP export will be available for testing',project:'Finance Close Automation',owner:'Finance SME',impact:'Automation validation depends on source data',status:'Open',next:'Validate export timing',due:'May 14, 2026'},
+    {type:'Decision',item:'Use standard PMO scorecard for intake',project:'Portfolio Governance',owner:'PMO Director',impact:'Normalizes prioritization',status:'Approved',next:'Publish scorecard SOP',due:'May 20, 2026'}
+  ],
+  issues:[
+    {issue:'UAT defects exceed acceptance threshold',severity:'High',project:'Retail Analytics Upgrade',owner:'QA Lead',plan:'Run defect triage and defer non-critical fixes',status:'In Progress',target:'May 16, 2026'},
+    {issue:'Sponsor availability delaying signoff',severity:'Medium',project:'Finance Close Automation',owner:'PM',plan:'Escalate alternate delegate approval',status:'Open',target:'May 13, 2026'}
+  ],
+  evidence:[
+    {artifact:'Portal pilot scope approval',category:'Approval',project:'Customer Portal Modernization',owner:'PM',location:'Confluence / PMO Governance',review:'Ready',retention:'Project close + 2 years'},
+    {artifact:'Retail analytics UAT summary',category:'Testing Evidence',project:'Retail Analytics Upgrade',owner:'QA Lead',location:'SharePoint / Testing',review:'Needs Update',retention:'Project close + 2 years'},
+    {artifact:'Change request approval log',category:'Governance Artifact',project:'All Portfolio',owner:'PMO Analyst',location:'PMO Change Control',review:'Ready',retention:'Annual audit cycle'}
+  ],
+  policies:[
+    {doc:'PMO Project Naming Convention',type:'Standard',owner:'PMO Director',version:'1.2',reviewed:'Apr 22, 2026',status:'Active',location:'Confluence / PMO SOPs'},
+    {doc:'Change Control Procedure',type:'SOP',owner:'PMO Governance Lead',version:'2.0',reviewed:'Mar 30, 2026',status:'Active',location:'Confluence / Governance'},
+    {doc:'Project Closure Checklist',type:'Template',owner:'PMO Analyst',version:'1.0',reviewed:'Feb 18, 2026',status:'Needs Review',location:'Confluence / Templates'}
+  ],
+  approvals:[
+    {item:'SSO requirement scope change',area:'Security',approver:'Security Director',project:'Customer Portal Modernization',submitted:'May 6, 2026',due:'May 10, 2026',status:'Pending',blocker:'Yes'},
+    {item:'Additional UAT window',area:'Sponsor',approver:'Retail VP',project:'Retail Analytics Upgrade',submitted:'May 5, 2026',due:'May 9, 2026',status:'Approved',blocker:'No'},
+    {item:'Discovery budget adjustment',area:'Finance',approver:'Finance Controller',project:'Finance Close Automation',submitted:'May 4, 2026',due:'May 12, 2026',status:'In Review',blocker:'No'}
+  ]
+};
+const forms={
+  raidItem:{title:'Add RAID Item',target:'raid',fields:[['type','Type','select','Risk|Assumption|Issue|Decision'],['item','Item','textarea'],['project','Project'],['owner','Owner'],['impact','Impact','textarea'],['status','Status','select','Open|At Risk|In Progress|Approved|Closed'],['next','Next Action','textarea'],['due','Due Date']]},
+  issueItem:{title:'Add Issue',target:'issues',fields:[['issue','Issue','textarea'],['severity','Severity','select','Low|Medium|High|Critical'],['project','Project'],['owner','Owner'],['plan','Resolution Plan','textarea'],['status','Status','select','Open|In Progress|Blocked|Resolved|Accepted'],['target','Target Date']]},
+  evidenceItem:{title:'Add Audit Evidence',target:'evidence',fields:[['artifact','Artifact'],['category','Category','select','Approval|Signoff|Testing Evidence|Governance Artifact|Exception|Other'],['project','Project'],['owner','Owner'],['location','Location / Link','textarea'],['review','Review Status','select','Ready|Needs Update|Missing|Archived'],['retention','Retention']]},
+  policyItem:{title:'Add Policy / SOP',target:'policies',fields:[['doc','Document Name'],['type','Type','select','Policy|SOP|Standard|Template|Checklist'],['owner','Owner'],['version','Version'],['reviewed','Last Review Date'],['status','Status','select','Active|Draft|Needs Review|Retired'],['location','Location / Link','textarea']]},
+  approvalItem:{title:'Add Approval',target:'approvals',fields:[['item','Approval Item','textarea'],['area','Approval Area','select','Sponsor|Finance|IT|Security|Legal|PMO|Other'],['approver','Approver'],['project','Project'],['submitted','Submitted Date'],['due','Due Date'],['status','Status','select','Pending|In Review|Approved|Rejected|Escalated'],['blocker','Delivery Blocker','select','No|Yes']]}
+};
+function normalizeData(){['raid','issues','evidence','policies','approvals'].forEach(k=>{if(!Array.isArray(data[k]))data[k]=[]})}
+function authHeaders(){let key=sessionStorage.getItem('bp_pmo_controls_key')||'';if(!key){key=prompt('Enter the PMO edit key for cloud saves:')||'';if(key)sessionStorage.setItem('bp_pmo_controls_key',key)}return key?{'X-PMO-Key':key}:{}}
+function setCloudStatus(text,state='bad'){const el=document.getElementById('cloudStatus');el.className='cloud-status '+state;el.querySelector('span:last-child').textContent=text}
+async function loadRemote(){if(!REMOTE_ENABLED){setCloudStatus('Configure Worker URL','bad');render();return}try{setCloudStatus('Loading cloud data','');const res=await fetch(API_BASE.replace(/\/$/,'')+'/data',{cache:'no-store'});if(!res.ok)throw new Error('Load failed');data=await res.json();normalizeData();setCloudStatus('Cloud connected','ok');render()}catch(err){setCloudStatus('Cloud load failed','bad');render();toast('Could not load cloud data',true)}}
+async function save(){if(!REMOTE_ENABLED){toast('Add your Cloudflare Worker URL first',true);return false}try{setCloudStatus('Saving','');const res=await fetch(API_BASE.replace(/\/$/,'')+'/data',{method:'PUT',headers:{'Content-Type':'application/json',...authHeaders()},body:JSON.stringify(data)});if(res.status===401){sessionStorage.removeItem('bp_pmo_controls_key');throw new Error('Unauthorized')}if(!res.ok)throw new Error('Save failed');setCloudStatus('Saved to GitHub','ok');return true}catch(err){setCloudStatus('Save failed','bad');toast(err.message==='Unauthorized'?'Wrong edit key':'Cloud save failed',true);return false}}
+function badge(text){const t=(text||'').toLowerCase();let c='badge-blue';if(t.includes('approved')||t.includes('active')||t.includes('ready')||t.includes('resolved')||t.includes('closed'))c='badge-green';if(t.includes('critical')||t.includes('high')||t.includes('risk')||t.includes('missing')||t.includes('blocked')||t.includes('yes')||t.includes('rejected'))c='badge-red';if(t.includes('pending')||t.includes('review')||t.includes('medium')||t.includes('progress')||t.includes('update')||t.includes('open'))c='badge-amber';if(t.includes('decision')||t.includes('sop')||t.includes('security')||t.includes('legal'))c='badge-purple';if(t.includes('evidence')||t.includes('testing')||t.includes('it')||t.includes('finance'))c='badge-teal';return `<span class="badge ${c}">${text}</span>`}
+function rowTools(type,index){return `<div class="row-tools"><button class="tool-btn" onclick="editItem('${type}',${index})">Edit</button><button class="tool-btn danger" onclick="deleteItem('${type}',${index})">Delete</button></div>`}
+function showPane(id,btn){document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function render(){normalizeData();document.getElementById('todayLabel').textContent=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});const openRaid=data.raid.filter(x=>!['Closed','Approved'].includes(x.status)).length;const highIssues=data.issues.filter(x=>['High','Critical'].includes(x.severity)).length;const evidenceGaps=data.evidence.filter(x=>['Needs Update','Missing'].includes(x.review)).length;const pendingApprovals=data.approvals.filter(x=>!['Approved','Rejected'].includes(x.status)).length;document.getElementById('kpis').innerHTML=[['Open RAID',openRaid,'Risks, assumptions, issues, decisions'],['High Issues',highIssues,'Need active resolution'],['Evidence Gaps',evidenceGaps,'Missing or stale artifacts'],['Pending Approvals',pendingApprovals,'Waiting for signoff']].map(k=>`<div class="kpi"><div class="kpi-label">${k[0]}</div><div class="kpi-value">${k[1]}</div><div class="kpi-sub">${k[2]}</div></div>`).join('');document.getElementById('attentionList').innerHTML=[`<strong>${highIssues} high/critical issues</strong> need resolution planning.`,`<strong>${evidenceGaps} evidence items</strong> need update or recovery.`,`<strong>${pendingApprovals} approvals</strong> are not yet complete.`].map((x,i)=>`<div class="alert ${i===0?'red':i===1?'amber':''}">${x}</div>`).join('');
+document.getElementById('raidRows').innerHTML=data.raid.map((r,i)=>`<tr><td>${badge(r.type)}</td><td class="td-bold">${r.item}</td><td>${r.project}</td><td>${r.owner}</td><td>${r.impact}</td><td>${badge(r.status)}</td><td>${r.next}</td><td>${r.due}</td><td>${rowTools('raidItem',i)}</td></tr>`).join('');
+document.getElementById('issueRows').innerHTML=data.issues.map((r,i)=>`<tr><td class="td-bold">${r.issue}</td><td>${badge(r.severity)}</td><td>${r.project}</td><td>${r.owner}</td><td>${r.plan}</td><td>${badge(r.status)}</td><td>${r.target}</td><td>${rowTools('issueItem',i)}</td></tr>`).join('');
+document.getElementById('evidenceRows').innerHTML=data.evidence.map((r,i)=>`<tr><td class="td-bold">${r.artifact}</td><td>${badge(r.category)}</td><td>${r.project}</td><td>${r.owner}</td><td>${r.location}</td><td>${badge(r.review)}</td><td>${r.retention}</td><td>${rowTools('evidenceItem',i)}</td></tr>`).join('');
+document.getElementById('policyRows').innerHTML=data.policies.map((r,i)=>`<tr><td class="td-bold">${r.doc}</td><td>${badge(r.type)}</td><td>${r.owner}</td><td>${r.version}</td><td>${r.reviewed}</td><td>${badge(r.status)}</td><td>${r.location}</td><td>${rowTools('policyItem',i)}</td></tr>`).join('');
+document.getElementById('approvalRows').innerHTML=data.approvals.map((r,i)=>`<tr><td class="td-bold">${r.item}</td><td>${badge(r.area)}</td><td>${r.approver}</td><td>${r.project}</td><td>${r.submitted}</td><td>${r.due}</td><td>${badge(r.status)}</td><td>${badge(r.blocker)}</td><td>${rowTools('approvalItem',i)}</td></tr>`).join('')}
+function openModal(type){activeForm=type;editingIndex=-1;const f=forms[type];document.getElementById('modalTitle').textContent=f.title;document.getElementById('modalFields').innerHTML=f.fields.map(([id,label,type='text',opts=''])=>{const cls=type==='textarea'?'field full':'field';const input=type==='textarea'?`<textarea id="mf_${id}"></textarea>`:type==='select'?`<select id="mf_${id}">${opts.split('|').map(o=>`<option>${o}</option>`).join('')}</select>`:`<input id="mf_${id}" type="${type}">`;return `<div class="${cls}"><label>${label}</label>${input}</div>`}).join('');document.getElementById('dataModal').style.display='flex'}
+function editItem(type,index){activeForm=type;const f=forms[type];const item=data[f.target][index];openModal(type);editingIndex=index;document.getElementById('modalTitle').textContent='Edit '+f.title.replace(/^Add /,'');f.fields.forEach(([id])=>{const el=document.getElementById('mf_'+id);if(el)el.value=item[id]||''})}
+async function deleteItem(type,index){const f=forms[type];const item=data[f.target][index];const label=item.item||item.issue||item.artifact||item.doc||'this entry';if(!confirm(`Delete "${label}"?`))return;const old=[...data[f.target]];data[f.target].splice(index,1);render();if(await save())toast('Entry deleted');else{data[f.target]=old;render()}}
+function closeModal(){document.getElementById('dataModal').style.display='none'}
+async function saveModal(){const f=forms[activeForm];const item={};f.fields.forEach(([id])=>{item[id]=document.getElementById('mf_'+id).value.trim()});if(!Object.values(item).some(Boolean)){toast('Add at least one value',true);return}const old=[...data[f.target]];if(editingIndex>=0)data[f.target][editingIndex]=item;else data[f.target].unshift(item);render();if(await save()){closeModal();toast(editingIndex>=0?'Entry updated':'Entry saved')}else{data[f.target]=old;render()}}
+function toast(msg,err=false){const t=document.getElementById('toast');t.textContent=msg;t.style.background=err?'#BF2600':'#0F3053';t.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+document.getElementById('dataModal').addEventListener('click',e=>{if(e.target.id==='dataModal')closeModal()});
+loadRemote();
+</script>
+</body>
+</html>
