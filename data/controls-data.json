@@ -1,0 +1,144 @@
+{
+  "raid": [
+    {
+      "type": "Risk",
+      "item": "Security review may delay portal pilot",
+      "project": "Customer Portal Modernization",
+      "owner": "Security Lead",
+      "impact": "Pilot release may shift by two weeks",
+      "status": "At Risk",
+      "next": "Confirm SSO decision path",
+      "due": "May 10, 2026"
+    },
+    {
+      "type": "Assumption",
+      "item": "ERP export will be available for testing",
+      "project": "Finance Close Automation",
+      "owner": "Finance SME",
+      "impact": "Automation validation depends on source data",
+      "status": "Open",
+      "next": "Validate export timing",
+      "due": "May 14, 2026"
+    },
+    {
+      "type": "Decision",
+      "item": "Use standard PMO scorecard for intake",
+      "project": "Portfolio Governance",
+      "owner": "PMO Director",
+      "impact": "Normalizes prioritization",
+      "status": "Approved",
+      "next": "Publish scorecard SOP",
+      "due": "May 20, 2026"
+    }
+  ],
+  "issues": [
+    {
+      "issue": "UAT defects exceed acceptance threshold",
+      "severity": "High",
+      "project": "Retail Analytics Upgrade",
+      "owner": "QA Lead",
+      "plan": "Run defect triage and defer non-critical fixes",
+      "status": "In Progress",
+      "target": "May 16, 2026"
+    },
+    {
+      "issue": "Sponsor availability delaying signoff",
+      "severity": "Medium",
+      "project": "Finance Close Automation",
+      "owner": "PM",
+      "plan": "Escalate alternate delegate approval",
+      "status": "Open",
+      "target": "May 13, 2026"
+    }
+  ],
+  "evidence": [
+    {
+      "artifact": "Portal pilot scope approval",
+      "category": "Approval",
+      "project": "Customer Portal Modernization",
+      "owner": "PM",
+      "location": "Confluence / PMO Governance",
+      "review": "Ready",
+      "retention": "Project close + 2 years"
+    },
+    {
+      "artifact": "Retail analytics UAT summary",
+      "category": "Testing Evidence",
+      "project": "Retail Analytics Upgrade",
+      "owner": "QA Lead",
+      "location": "SharePoint / Testing",
+      "review": "Needs Update",
+      "retention": "Project close + 2 years"
+    },
+    {
+      "artifact": "Change request approval log",
+      "category": "Governance Artifact",
+      "project": "All Portfolio",
+      "owner": "PMO Analyst",
+      "location": "PMO Change Control",
+      "review": "Ready",
+      "retention": "Annual audit cycle"
+    }
+  ],
+  "policies": [
+    {
+      "doc": "PMO Project Naming Convention",
+      "type": "Standard",
+      "owner": "PMO Director",
+      "version": "1.2",
+      "reviewed": "Apr 22, 2026",
+      "status": "Active",
+      "location": "Confluence / PMO SOPs"
+    },
+    {
+      "doc": "Change Control Procedure",
+      "type": "SOP",
+      "owner": "PMO Governance Lead",
+      "version": "2.0",
+      "reviewed": "Mar 30, 2026",
+      "status": "Active",
+      "location": "Confluence / Governance"
+    },
+    {
+      "doc": "Project Closure Checklist",
+      "type": "Template",
+      "owner": "PMO Analyst",
+      "version": "1.0",
+      "reviewed": "Feb 18, 2026",
+      "status": "Needs Review",
+      "location": "Confluence / Templates"
+    }
+  ],
+  "approvals": [
+    {
+      "item": "SSO requirement scope change",
+      "area": "Security",
+      "approver": "Security Director",
+      "project": "Customer Portal Modernization",
+      "submitted": "May 6, 2026",
+      "due": "May 10, 2026",
+      "status": "Pending",
+      "blocker": "Yes"
+    },
+    {
+      "item": "Additional UAT window",
+      "area": "Sponsor",
+      "approver": "Retail VP",
+      "project": "Retail Analytics Upgrade",
+      "submitted": "May 5, 2026",
+      "due": "May 9, 2026",
+      "status": "Approved",
+      "blocker": "No"
+    },
+    {
+      "item": "Discovery budget adjustment",
+      "area": "Finance",
+      "approver": "Finance Controller",
+      "project": "Finance Close Automation",
+      "submitted": "May 4, 2026",
+      "due": "May 12, 2026",
+      "status": "In Review",
+      "blocker": "No"
+    }
+  ]
+}
